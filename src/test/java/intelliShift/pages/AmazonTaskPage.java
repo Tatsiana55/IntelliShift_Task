@@ -1,6 +1,6 @@
-package IntelliShift.pages;
+package intelliShift.pages;
 
-import IntelliShift.utilities.Driver;
+import intelliShift.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,23 +15,32 @@ public class AmazonTaskPage {
     @FindBy(xpath = "//div[@class='s-suggestion s-suggestion-ellipsis-direction']")
     private List<WebElement> suggestions;
 
+
+    @FindBy(xpath = "//div[@class='left-pane-results-container']//div[1]")
+    private WebElement suggestionFirstOption;
+
     @FindBy(css = "#twotabsearchtextbox")
     private WebElement searchBar;
+
+
+    @FindBy (css = "[cel_widget_id^='MAIN-SEARCH_RESULTS']")
+    private List<WebElement> searchResult;
 
     @FindBy(xpath = "//span[@id='a-autoid-0-announce']")
     private WebElement sortByButton;
 
-    @FindBy(xpath = "//span[@class='a-size-base-plus a-color-base a-text-normal']")
-    private List<WebElement> searchResultText;
-
-    @FindBy(xpath = "//span[@class='a-size-base-plus a-color-base a-text-normal']/..")
-    private List<WebElement> searchResultLinks;
-
     @FindBy(css = "#s-result-sort-select_1")
     private WebElement sortLowToHigh;
 
-    @FindBy(xpath = "//span[@class='a-button-inner']//span[@id='a-autoid-0-announce']")
+    @FindBy(xpath = "//span[@id='a-autoid-0-announce']")
     private WebElement quantityDropDown;
+
+    public List<WebElement> getDropDownOptions() {
+        return dropDownOptions;
+    }
+
+    @FindBy(xpath = "//span[@id='a-autoid-0-announce']/li")
+    private List<WebElement> dropDownOptions;
 
     @FindBy(css = "a#quantity_1")
     private WebElement option2DropDown;
@@ -39,35 +48,37 @@ public class AmazonTaskPage {
     @FindBy(css = "#add-to-cart-button")
     private WebElement addToCartButton;
 
-    @FindBy(xpath = "//span//a[@data-csa-c-content-id='sw-gtc_CONTENT']")
+    @FindBy(xpath = "//span[@id = 'attach-sidesheet-view-cart-button']")
     private WebElement goToCartButton;
+
+    @FindBy(css = "#sc-active-cart")
+    private WebElement shoppingCartItem;
 
 
     @FindBy(xpath = "//span//input[@data-action='delete']")
     private WebElement deleteFromCartButton;
 
-    @FindBy(xpath = "//div[@id='sc-active-cart']//h1")
+    @FindBy(xpath = "//h1")
     private WebElement message;
 
     public List<WebElement> getSuggestions() {
         return suggestions;
     }
+    public WebElement getSuggestionFirstOption() {
+        return suggestionFirstOption;
+    }
 
     public WebElement getSearchBar() {
         return searchBar;
+    }
+    public List<WebElement> getSearchResult() {
+        return searchResult;
     }
 
     public WebElement getSortByButton() {
         return sortByButton;
     }
 
-    public List<WebElement> getSearchResultText() {
-        return searchResultText;
-    }
-
-    public List<WebElement> getSearchResultLinks() {
-        return searchResultLinks;
-    }
     public WebElement getSortLowToHigh() {
         return sortLowToHigh;
     }
@@ -86,6 +97,9 @@ public class AmazonTaskPage {
 
     public WebElement getGoToCartButton() {
         return goToCartButton;
+    }
+    public WebElement getShoppingCartItem() {
+        return shoppingCartItem;
     }
 
     public WebElement getDeleteFromCartButton() {

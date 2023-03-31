@@ -1,0 +1,163 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "start_timestamp": "2023-03-31T18:36:16.576Z",
+        "line": 3,
+        "name": "looking for a gel pen",
+        "description": "",
+        "id": ";looking-for-a-gel-pen",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 5339444200,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "user navigates to Amazon page",
+            "match": {
+              "location": "intelliShift.step_definitions.AmazonTaskStepDefinitions.userNavigatesToAmazonPage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 427668000,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "user puts into search bar \"gel pen\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"gel pen\"",
+                  "offset": 26
+                }
+              ],
+              "location": "intelliShift.step_definitions.AmazonTaskStepDefinitions.userPutsIntoSearchBar(java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 560879700,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "verifies all suggestions contain \"gel pen\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"gel pen\"",
+                  "offset": 33
+                }
+              ],
+              "location": "intelliShift.step_definitions.AmazonTaskStepDefinitions.verifiesAllSuggestionsContain(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2936460800,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "user chooses last suggestions option",
+            "match": {
+              "location": "intelliShift.step_definitions.AmazonTaskStepDefinitions.user_chooses_last_suggestions_option()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2907916000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "user verifies all search result have \"Pen\" in its  title",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Pen\"",
+                  "offset": 37
+                }
+              ],
+              "location": "intelliShift.step_definitions.AmazonTaskStepDefinitions.userVerifiesAllSearchResultHaveInItsTitle(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5681540200,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "user clicks on the item that has the lowest price",
+            "match": {
+              "location": "intelliShift.step_definitions.AmazonTaskStepDefinitions.user_clicks_on_the_item_that_has_the_lowest_price_changes_quantity_to_adds_item_to_the_cart()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "error_message": "org.openqa.selenium.NoSuchElementException: Cannot locate an element using css selector\u003da#quantity_1\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027LAPTOP-G7EA990S\u0027, ip: \u0027192.168.1.26\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002711.0.16.1\u0027\nDriver info: driver.version: RemoteWebDriver\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:327)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:420)\r\n\tat org.openqa.selenium.By$ByCssSelector.findElement(By.java:431)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\r\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\r\n\tat com.sun.proxy.$Proxy22.click(Unknown Source)\r\n\tat intelliShift.step_definitions.AmazonTaskStepDefinitions.changesQuantityToTwoAddsItemToTheCart(AmazonTaskStepDefinitions.java:89)\r\n\tat ✽.changes quantity to two, adds item to the cart(file:///C:/Users/tanya/IdeaProjects/IntelliShift_Task/src/test/resources/features/AmazonTask.feature:10)\r\n",
+              "duration": 4098648700,
+              "status": "failed"
+            },
+            "line": 10,
+            "name": "changes quantity to two, adds item to the cart",
+            "match": {
+              "location": "intelliShift.step_definitions.AmazonTaskStepDefinitions.changesQuantityToTwoAddsItemToTheCart()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 11,
+            "name": "user empty cart",
+            "match": {
+              "location": "intelliShift.step_definitions.AmazonTaskStepDefinitions.user_empty_cart()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 12,
+            "name": "verifies the message",
+            "match": {
+              "location": "intelliShift.step_definitions.AmazonTaskStepDefinitions.verifies_the_message()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@wip"
+          }
+        ]
+      }
+    ],
+    "name": "",
+    "description": "",
+    "id": "",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/AmazonTask.feature",
+    "tags": [
+      {
+        "name": "@wip",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

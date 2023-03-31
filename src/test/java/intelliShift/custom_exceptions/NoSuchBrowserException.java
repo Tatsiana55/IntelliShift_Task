@@ -1,4 +1,4 @@
-package IntelliShift.custom_exceptions;
+package intelliShift.custom_exceptions;
 
 public class NoSuchBrowserException extends RuntimeException {
     public NoSuchBrowserException(String errorMessage){

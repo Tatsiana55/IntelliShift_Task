@@ -1,6 +1,6 @@
-package IntelliShift.utilities;
+package intelliShift.utilities;
 
-import IntelliShift.custom_exceptions.NoSuchBrowserException;
+import intelliShift.custom_exceptions.NoSuchBrowserException;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,6 +30,8 @@ public class Driver {
                     chromeOptions.addArguments("--headless");
                     chromeOptions.addArguments("disable-gpu");
                     driver = new ChromeDriver(chromeOptions);
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 default:
                     throw new NoSuchBrowserException("No Such Browser Available");

@@ -1,4 +1,4 @@
-package IntelliShift.utilities;
+package intelliShift.utilities;
 
 import java.io.FileInputStream;
 import java.io.IOException;
