@@ -12,29 +12,28 @@ public class AmazonTaskPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+    @FindBy(xpath = "//div[@class='s-suggestion s-suggestion-ellipsis-direction']")
+    private List<WebElement> suggestions;
 
     @FindBy(css = "#twotabsearchtextbox")
     private WebElement searchBar;
 
-    @FindBy(css = "#a-autoid-0-announce")
+    @FindBy(xpath = "//span[@id='a-autoid-0-announce']")
     private WebElement sortByButton;
 
     @FindBy(xpath = "//span[@class='a-size-base-plus a-color-base a-text-normal']")
     private List<WebElement> searchResultText;
 
-    @FindBy(xpath = "//h2[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-4']//a")
+    @FindBy(xpath = "//span[@class='a-size-base-plus a-color-base a-text-normal']/..")
     private List<WebElement> searchResultLinks;
 
     @FindBy(css = "#s-result-sort-select_1")
     private WebElement sortLowToHigh;
 
-    @FindBy(xpath = "//span[@class='a-price']//span[@class='a-offscreen']")
-    private WebElement getPrice;
-
-    @FindBy(xpath = "//span[@class='a-button-inner']//span[@id='a-autoid-0-announce'")
+    @FindBy(xpath = "//span[@class='a-button-inner']//span[@id='a-autoid-0-announce']")
     private WebElement quantityDropDown;
 
-    @FindBy(css = "a#quantity_2")
+    @FindBy(css = "a#quantity_1")
     private WebElement option2DropDown;
 
     @FindBy(css = "#add-to-cart-button")
@@ -49,6 +48,10 @@ public class AmazonTaskPage {
 
     @FindBy(xpath = "//div[@id='sc-active-cart']//h1")
     private WebElement message;
+
+    public List<WebElement> getSuggestions() {
+        return suggestions;
+    }
 
     public WebElement getSearchBar() {
         return searchBar;
@@ -67,10 +70,6 @@ public class AmazonTaskPage {
     }
     public WebElement getSortLowToHigh() {
         return sortLowToHigh;
-    }
-
-    public WebElement getGetPrice() {
-        return getPrice;
     }
 
     public WebElement getQuantityDropDown() {

@@ -8,6 +8,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -31,33 +34,38 @@ public class AmazonTask {
 
     @Test
     public void gelPen() throws InterruptedException {
+
         String expectedTitle = "Amazon.com. Spend less. Smile more.";
         Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
 
         AmazonTaskPage amazonTaskPage = new AmazonTaskPage();
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),2);
 
         //Search for “Gel Pen”.
-        amazonTaskPage.getSearchBar().sendKeys("Gel Pen" + Keys.ENTER);
+        amazonTaskPage.getSearchBar().sendKeys("Gel Pen");
+        Thread.sleep(2000);
 
-        //Validate all search suggestions contain “gel pens“ and choose last gel pen option from the suggestions.
-        SoftAssert softAssert = new SoftAssert();
-        for (WebElement each : amazonTaskPage.getSearchResultText()) {
-            softAssert.assertTrue(each.getText().toLowerCase().contains("gel pens"));
+        //Validate all search suggestions contain “gel pen“ and choose last gel pen option from the suggestions.
+        for(WebElement each : amazonTaskPage.getSuggestions()){
+            Assert.assertTrue(each.getText().contains("gel pen"));
         }
-        amazonTaskPage.getSearchResultLinks().get(amazonTaskPage.getSearchResultLinks().size()-1).click();
-        Driver.getDriver().navigate().back();
+        amazonTaskPage.getSuggestions().get(amazonTaskPage.getSuggestions().size()-1).click();
+        SoftAssert softAssert = new SoftAssert();
+
 
         //Check the search result ensuring every product item has the “Pen” in its title.
          for(WebElement each: amazonTaskPage.getSearchResultText()){
-            softAssert.assertTrue(each.getText().contains("Pen"));
+             softAssert.assertTrue(each.getText().contains("Pen"));
         }
 
          //Click on the item from that has the lowest price in the search list.
         amazonTaskPage.getSortByButton().click();
         amazonTaskPage.getSortLowToHigh().click();
-        amazonTaskPage.getSearchResultLinks().get(1).click();
+        amazonTaskPage.getSearchResultLinks().get(0).click();
 
         //Change quantity to 2 then add to cart.
+//
+        wait.until(ExpectedConditions.visibilityOf(amazonTaskPage.getQuantityDropDown()));
         amazonTaskPage.getQuantityDropDown().click();
         amazonTaskPage.getOption2DropDown().click();
         amazonTaskPage.getAddToCartButton().click();
