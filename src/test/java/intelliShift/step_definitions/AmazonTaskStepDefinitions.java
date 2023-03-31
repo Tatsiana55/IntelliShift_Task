@@ -22,8 +22,9 @@ import static intelliShift.utilities.TestData.*;
 
 public class AmazonTaskStepDefinitions {
 
-    private final AmazonTaskPage amazonTaskPage = new AmazonTaskPage();
-    private final WebDriverWait wait = new WebDriverWait(Driver.getDriver(),DEFAULT_WAIT);
+    AmazonTaskPage amazonTaskPage = new AmazonTaskPage();
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(),DEFAULT_WAIT);
+    SoftAssert softAssert = new SoftAssert();
 
 
     @Given("user navigates to Amazon page")
@@ -31,6 +32,7 @@ public class AmazonTaskStepDefinitions {
         Driver.getDriver().get(AMAZON_URL);
         Assert.assertEquals(Driver.getDriver().getTitle(), EXPECTED_TITLE);
     }
+
     @When("user puts into search bar {string}")
     public void userPutsIntoSearchBar(String itemName) {
         itemName = ITEM_NAME;
@@ -49,27 +51,27 @@ public class AmazonTaskStepDefinitions {
             Assert.assertTrue(each.getText().contains(itemName));
         }
         }catch (StaleElementReferenceException a){
-
-
-
         }
     }
+
     @When("user chooses last suggestions option")
     public void user_chooses_last_suggestions_option() {
         amazonTaskPage.getSuggestions().get(amazonTaskPage.getSuggestions().size()-1).click();
 
     }
+
     @And("user verifies all search result have {string} in its  title")
     public void userVerifiesAllSearchResultHaveInItsTitle(String word) {
         word=WORD;
-        SoftAssert softAssert = new SoftAssert();
         for(WebElement each: amazonTaskPage.getSearchResult()){
-            softAssert.assertTrue(each.getText().contains("word"));
+            softAssert.assertTrue(each.getText().contains(word));
 
         }
     }
+
     @When("user clicks on the item that has the lowest price")
     public void user_clicks_on_the_item_that_has_the_lowest_price_changes_quantity_to_adds_item_to_the_cart() {
+        //using Integer in this step because it does not impact comparing
         List<Integer> prices = new ArrayList<>();
         for (WebElement allProduct : amazonTaskPage.getSearchResult()) {
             int productPrice = Integer.parseInt(allProduct.findElement(By.className("a-price-whole")).getText() +
@@ -82,6 +84,7 @@ public class AmazonTaskStepDefinitions {
         BrowserUtils.clickWithJSExecutor(amazonTaskPage.getSearchResult().get(lowestPriceIndex));
 
     }
+
     @And("changes quantity to two, adds item to the cart")
     public void changesQuantityToTwoAddsItemToTheCart() {
         wait.until(ExpectedConditions.visibilityOf(amazonTaskPage.getQuantityDropDown()));
@@ -91,12 +94,14 @@ public class AmazonTaskStepDefinitions {
         amazonTaskPage.getAddToCartButton().click();
 
     }
+
     @Then("user empty cart")
     public void user_empty_cart() {
         amazonTaskPage.getGoToCartButton().click();
         amazonTaskPage.getDeleteFromCartButton().click();
 
     }
+
     @Then("verifies the message")
     public void verifies_the_message() {
         wait.until(ExpectedConditions.textToBePresentInElement(amazonTaskPage.getMessage(),"Your Amazon Cart is empty."));

@@ -12,16 +12,18 @@ public class AmazonTaskPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+    /**
+     * Region Locators
+     */
+
     @FindBy(xpath = "//div[@class='s-suggestion s-suggestion-ellipsis-direction']")
     private List<WebElement> suggestions;
-
 
     @FindBy(xpath = "//div[@class='left-pane-results-container']//div[1]")
     private WebElement suggestionFirstOption;
 
     @FindBy(css = "#twotabsearchtextbox")
     private WebElement searchBar;
-
 
     @FindBy (css = "[cel_widget_id^='MAIN-SEARCH_RESULTS']")
     private List<WebElement> searchResult;
@@ -35,13 +37,6 @@ public class AmazonTaskPage {
     @FindBy(xpath = "//span[@id='a-autoid-0-announce']")
     private WebElement quantityDropDown;
 
-    public List<WebElement> getDropDownOptions() {
-        return dropDownOptions;
-    }
-
-    @FindBy(xpath = "//span[@id='a-autoid-0-announce']/li")
-    private List<WebElement> dropDownOptions;
-
     @FindBy(css = "a#quantity_1")
     private WebElement option2DropDown;
 
@@ -51,15 +46,19 @@ public class AmazonTaskPage {
     @FindBy(xpath = "//span[@id = 'attach-sidesheet-view-cart-button']")
     private WebElement goToCartButton;
 
-    @FindBy(css = "#sc-active-cart")
-    private WebElement shoppingCartItem;
-
-
     @FindBy(xpath = "//span//input[@data-action='delete']")
     private WebElement deleteFromCartButton;
 
     @FindBy(xpath = "//h1")
     private WebElement message;
+
+    /**
+     * END REGION
+     */
+
+    /**
+     * REGION GETTERS
+     */
 
     public List<WebElement> getSuggestions() {
         return suggestions;
@@ -98,9 +97,6 @@ public class AmazonTaskPage {
     public WebElement getGoToCartButton() {
         return goToCartButton;
     }
-    public WebElement getShoppingCartItem() {
-        return shoppingCartItem;
-    }
 
     public WebElement getDeleteFromCartButton() {
         return deleteFromCartButton;
@@ -109,6 +105,10 @@ public class AmazonTaskPage {
     public WebElement getMessage() {
         return message;
     }
+
+    /**
+     * END REGION
+     */
 
 
 
