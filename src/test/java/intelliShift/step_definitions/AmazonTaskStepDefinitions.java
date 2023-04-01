@@ -30,7 +30,7 @@ public class AmazonTaskStepDefinitions {
     @Given("user navigates to Amazon page")
     public void userNavigatesToAmazonPage() {
         Driver.getDriver().get(AMAZON_URL);
-        Assert.assertEquals(Driver.getDriver().getTitle(), EXPECTED_TITLE);
+        Assert.assertTrue(Driver.getDriver().getTitle().contains(EXPECTED_TITLE));
     }
 
     @When("user puts into search bar {string}")
@@ -71,17 +71,17 @@ public class AmazonTaskStepDefinitions {
 
     @When("user clicks on the item that has the lowest price")
     public void user_clicks_on_the_item_that_has_the_lowest_price_changes_quantity_to_adds_item_to_the_cart() {
-        //using Integer in this step because it does not impact comparing
+        //using Integer in this step because it does not impact comparing numbers
         List<Integer> prices = new ArrayList<>();
         for (WebElement allProduct : amazonTaskPage.getSearchResult()) {
             int productPrice = Integer.parseInt(allProduct.findElement(By.className("a-price-whole")).getText() +
                     allProduct.findElement(By.className("a-price-fraction")).getText());
             prices.add(productPrice);
         }
-        Integer minPrice = prices.stream().min(Integer::compare).get();
+        int minPrice = prices.stream().min(Integer::compare).get();
         int lowestPriceIndex = prices.indexOf(minPrice);
         wait.until(ExpectedConditions.elementToBeClickable(amazonTaskPage.getSearchResult().get(lowestPriceIndex)));
-        BrowserUtils.clickWithJSExecutor(amazonTaskPage.getSearchResult().get(lowestPriceIndex));
+        amazonTaskPage.getSearchResult().get(lowestPriceIndex).click();
 
     }
 

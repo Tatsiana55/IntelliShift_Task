@@ -29,12 +29,6 @@ public class AmazonTaskPage {
     private List<WebElement> searchResult;
 
     @FindBy(xpath = "//span[@id='a-autoid-0-announce']")
-    private WebElement sortByButton;
-
-    @FindBy(css = "#s-result-sort-select_1")
-    private WebElement sortLowToHigh;
-
-    @FindBy(xpath = "//span[@id='a-autoid-0-announce']")
     private WebElement quantityDropDown;
 
     @FindBy(css = "a#quantity_1")
@@ -66,42 +60,27 @@ public class AmazonTaskPage {
     public WebElement getSuggestionFirstOption() {
         return suggestionFirstOption;
     }
-
     public WebElement getSearchBar() {
         return searchBar;
     }
     public List<WebElement> getSearchResult() {
         return searchResult;
     }
-
-    public WebElement getSortByButton() {
-        return sortByButton;
-    }
-
-    public WebElement getSortLowToHigh() {
-        return sortLowToHigh;
-    }
-
     public WebElement getQuantityDropDown() {
         return quantityDropDown;
     }
-
     public WebElement getOption2DropDown() {
         return option2DropDown;
     }
-
     public WebElement getAddToCartButton() {
         return addToCartButton;
     }
-
     public WebElement getGoToCartButton() {
         return goToCartButton;
     }
-
     public WebElement getDeleteFromCartButton() {
         return deleteFromCartButton;
     }
-
     public WebElement getMessage() {
         return message;
     }

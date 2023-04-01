@@ -1,6 +1,7 @@
 package intelliShift.utilities;
 
 public interface TestData {
+
     String EXPECTED_MESSAGE = "Your Amazon Cart is empty.";
     String EXPECTED_TITLE = "Amazon.com";
     int DEFAULT_WAIT = 5;
